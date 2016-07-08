@@ -23,7 +23,7 @@
 			#wrap h2 {
 				text-align: center;
 				margin-top: 50%;
-				font-size: 6rem;
+				font-size: 3rem;
 				color: #0066cc;
 				text-shadow:#FFF 3px 5px 5px;
 			}
@@ -32,7 +32,7 @@
 
 	<body>
 		<div id="wrap">
-			<h2>摇一摇</h2>
+			<h2>没事……<br />拿出手机摇一摇？</h2>
 		</div>
 
 		<audio id="musicBox" preload="metadata" src="audio/shake.mp3">
@@ -47,7 +47,7 @@
 	       
 	    function deviceMotionHandler(eventData) {  
 	        
-	      var acceleration =eventData.accelerationIncludingGravity;  
+	      var acceleration =eventData.accelerationIncludingGravity;  //捕捉重力加速度
 	      //alert(newDate().getTime());
 	      var curTime = new Date().getTime();  
 	       
