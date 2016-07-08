@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title>摇一摇</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<style type="text/css">
+		html,body {
+			height: 100%;
+			width: 100%;
+		}
+			#wrap {
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				left: 0;
+				top: 0;
+				background-color: rgba(0, 0, 0, 0.8);
+				background: linear-gradient(0deg, #0066cc, #ccffff);
+			}
+			#wrap h2 {
+				text-align: center;
+				margin-top: 50%;
+				font-size: 2.5rem;
+				color: #0066cc;
+				text-shadow:#FFF 3px 5px 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<h2>其实<br>这只是为了锻炼一下你的手臂</h2>
+		</div>
+
+		<audio id="musicBox" preload="metadata" src="audio/shake.mp3">
+	<script type="text/javascript">
+		var music = document.getElementById("musicBox");
+		if (window.DeviceMotionEvent) { 
+		    window.addEventListener('devicemotion',deviceMotionHandler, false);  
+		} 
+	    var SHAKE_THRESHOLD = 800;  
+	    var last_update = 0;  
+	    var x, y, z, last_x, last_y, last_z;  
+	       
+	    function deviceMotionHandler(eventData) {  
+	        
+	      var acceleration =eventData.accelerationIncludingGravity;  
+	      //alert(newDate().getTime());
+	      var curTime = new Date().getTime();  
+	       
+	         // alert(curTime - last_update);
+	      if ((curTime - last_update)> 300) {  
+	                
+	          var diffTime = curTime -last_update;  
+	          last_update = curTime;  
+	       
+	          x = acceleration.x;  
+	          y = acceleration.y;  
+	          z = acceleration.z;  
+	       
+	          var speed = Math.abs(x +y + z - last_x - last_y - last_z) / diffTime * 10000;  
+	          
+	          if (speed > SHAKE_THRESHOLD) {  
+	          		//代码放到这里
+	          		window.location.href = "end.html";
+		              music.play();
+	          }  
+	          last_x = x;  
+	          last_y = y;  
+	          last_z = z;  
+	        }  
+	    }  
+	</script>
+</body>
+</html>
